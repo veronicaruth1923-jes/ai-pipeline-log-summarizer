@@ -21,3 +21,7 @@ An AI-powered prototype that summarizes enterprise data pipeline logs into human
 - Databricks integration
 - AI-based anomaly detection
 - Severity classification
+## Application Preview
+
+![AI Pipeline Log Summarizer Screenshot](<img width="1432" height="859" alt="AI log summazier" src="https://github.com/user-attachments/assets/9b75a97b-d0d1-428c-a4d2-e234f93e9cf6" />
+screenshot.png)
