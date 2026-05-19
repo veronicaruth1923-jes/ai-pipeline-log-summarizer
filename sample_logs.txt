@@ -1,0 +1,4 @@
+ERROR: Pipeline execution failed.
+Source table schema mismatch detected.
+Affected table: customer_orders.
+Job ID: 8742.
