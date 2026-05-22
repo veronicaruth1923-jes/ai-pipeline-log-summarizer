@@ -1,18 +1,42 @@
-import streamlit as st
+from openai import OpenAI
+import os
 
-st.title("AI Pipeline Log Summarizer")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-log_input = st.text_area("Paste Pipeline Logs")
+def summarize_log(log_text):
 
-if st.button("Summarize"):
-    st.subheader("AI Summary")
-    
-    st.write("""
-    Pipeline execution failed due to a schema mismatch 
-    in the customer_orders table.
+    prompt = f"""
+    You are an AI assistant for Data Engineering and DevOps teams.
 
-    Recommended Action:
-    Validate source schema and update ingestion mappings.
+    Analyze the following pipeline log and provide:
+    1. Failure Summary
+    2. Root Cause
+    3. Business Impact
+    4. Severity
+    5. Recommended Actions
 
-    Severity: Medium
-    """)
+    Log:
+    {log_text}
+    """
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are an expert Data Engineering incident analyst."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.2
+    )
+
+    return response.choices[0].message.content
+
+
+if __name__ == "__main__":
+
+    with open("sample_logs/schema_error.log", "r") as file:
+        log_data = file.read()
+
+    summary = summarize_log(log_data)
+
+    print("\nAI GENERATED INCIDENT SUMMARY\n")
+    print(summary)
