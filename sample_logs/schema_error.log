@@ -1,0 +1,5 @@
+2026-05-22 10:15:32 ERROR Pipeline failed at task transform_customer_records.
+AnalysisException: Cannot resolve column customer_region in input dataframe.
+Source file: customers_2026_05_22.csv
+Pipeline: customer_daily_refresh
+Environment: production
