@@ -1,0 +1,5 @@
+2026-05-22 13:05:44 ERROR Spark job failed during aggregation step.
+ExecutorLostFailure: Executor lost due to memory overhead.
+Stage: aggregate_monthly_revenue
+Pipeline: revenue_gold_refresh
+Environment: production
